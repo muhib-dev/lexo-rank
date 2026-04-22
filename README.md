@@ -2,6 +2,10 @@
 
 This project is a small React + Vite application that demonstrates why LexoRank-style string ranking scales better than numeric ranking for drag-and-drop lists.
 
+## Live Demo
+
+[https://muhib-dev.github.io/lexo-rank/](https://muhib-dev.github.io/lexo-rank/)
+
 The app shows two list implementations side by side:
 
 - **Numeric ranking** (`1, 2, 3...`) where reordering can cause cascading updates.
