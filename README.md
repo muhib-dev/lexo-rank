@@ -1,16 +1,53 @@
-# React + Vite
+# LexoRank Demo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a small React + Vite application that demonstrates why LexoRank-style string ranking scales better than numeric ranking for drag-and-drop lists.
 
-Currently, two official plugins are available:
+The app shows two list implementations side by side:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Numeric ranking** (`1, 2, 3...`) where reordering can cause cascading updates.
+- **LexoRank ranking** (`"G", "N", "a"...`) where each move can be handled with a single rank update.
 
-## React Compiler
+## What the app includes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Interactive drag-and-drop demo for both ranking strategies
+- Database write log view to compare update cost per reorder
+- Explanation tab with examples of cascading vs midpoint ranking
+- Code tab with sample logic (`lexMid`, reorder flow, schema, rebalancing)
+- Clean Tailwind CSS based UI
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- Tailwind CSS
+- ESLint
+
+## Getting started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Why this project exists
+
+When using integer ranks, repeated insertions between nearby values eventually run out of gap and force bulk re-numbering. LexoRank avoids this by generating a sortable string between two neighboring ranks, reducing reorder writes and making list ordering more scalable for large datasets.
